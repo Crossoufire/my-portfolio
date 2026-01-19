@@ -17,7 +17,7 @@ const { title, description = "Full-stack developer portfolio" } = Astro.props;
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content={description}/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`}/>
     <title>{title}</title>
 </head>
 <body class="min-h-screen flex flex-col relative overflow-x-hidden">

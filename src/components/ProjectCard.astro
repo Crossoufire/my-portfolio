@@ -46,7 +46,7 @@ const statusStyles = {
     </div>
 
     <div class="flex items-center justify-start gap-4 pt-4 border-t border-border mt-auto">
-        <a href={`/projects/${project.slug}`} class="text-brand hover:text-brand/80 text-sm font-semibold transition-colors">
+        <a href={`${import.meta.env.BASE_URL}/projects/${project.slug}`} class="text-brand hover:text-brand/80 text-sm font-semibold transition-colors">
             Learn more
         </a>
         {project.url &&
