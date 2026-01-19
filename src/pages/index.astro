@@ -1,25 +1,106 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Hero from "@/components/Hero.astro";
+import Layout from "@/layouts/Layout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import {projects, featuredProjects} from "@/data/projects";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+<Layout title="Crossoufire | Full-Stack Dev Portfolio">
+    <Hero/>
+
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Featured <span class="text-brand">Projects</span>
+                </h2>
+                <p class="text-muted-foreground text-center max-w-2xl">
+                    Here are some of my main projects that showcase my skills in full-stack dev.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                {featuredProjects.map((project) =>
+                    <ProjectCard
+                        project={project}
+                    />
+                )}
+            </div>
+
+            <h3 class="text-2xl font-bold mb-8 pl-2 border-l-4 border-brand">
+                All My Projects
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.filter((p) => !p.featured).map((project) =>
+                    <ProjectCard
+                        project={project}
+                    />
+                )}
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-secondary/30 border-y border-border">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                About <span class="text-brand">Me</span>
+            </h2>
+
+            <div class="max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground">
+                <p>
+                    I'm a full-stack dev with a passion for building modern,
+                    type-safe web app. I love working with the <span class="text-foreground font-medium">TanStack</span>
+                    ecosystem, particularly TanStack Start, Query, and Router.
+                </p>
+                <p>
+                    My projects range from comprehensive media tracking platforms to
+                    lightweight infrastructure tools. I enjoy solving real problems and
+                    creating tools that make my life easier.
+                </p>
+
+                <div class="pt-8">
+                    <h3 class="text-xl font-semibold mb-6 text-foreground">Tech I Love</h3>
+                    <div class="flex flex-wrap gap-3">
+                        {["TypeScript", "React", "TanStack Start", "Drizzle", "Tailwind", "Python", "Bun"].map((tech) =>
+                            <span class="px-4 py-2 bg-background border border-border text-foreground rounded-lg text-sm
+                            font-medium hover:border-brand/50 transition-colors">
+                                {tech}
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Get in <span class="text-brand">Touch</span>
+            </h2>
+            <p class="text-muted-foreground mb-10 max-w-xl mx-auto">
+                Interested in collaborating or just want to say hi? Feel free to reach out!
+            </p>
+
+            <div class="flex items-center justify-center gap-4">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://github.com/Crossoufire"
+                    class="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors flex items-center gap-2"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="mailto:your-email@example.com" class="px-6 py-3 bg-brand text-brand-foreground rounded-lg font-medium hover:opacity-90 transition-opacity">
+                    Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,41 @@
+---
+const data = [
+    { label: "Projects", value: "14+" },
+    { label: "Languages", value: "4+" },
+    { label: "Stack", value: "Full" },
+    { label: "Curiosity", value: "∞" },
+]
+---
+
+<section class="min-h-screen flex items-center justify-center pt-20">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            Hi, I'm <span class="text-brand">Crossoufire</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+            Full-stack dev passionate about building modern, type-safe web apps with great user experiences.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+            <a href="#projects" class="px-8 py-3 bg-brand text-brand-foreground rounded-full font-medium hover:opacity-90 transition-opacity">
+                View Projects
+            </a>
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/Crossoufire"
+                class="px-8 py-3 border border-border bg-card rounded-full font-medium hover:border-brand hover:text-brand transition-colors"
+            >
+                GitHub Profile
+            </a>
+        </div>
+
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {data.map((stat) =>
+                <div class="p-6 rounded-2xl bg-card border border-border/50 hover:border-border transition-colors">
+                    <div class="text-3xl font-bold text-foreground mb-1">{stat.value}</div>
+                    <div class="text-muted-foreground text-sm font-medium">{stat.label}</div>
+                </div>
+            )}
+        </div>
+    </div>
+</section>

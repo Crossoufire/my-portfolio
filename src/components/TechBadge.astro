@@ -1,0 +1,78 @@
+---
+interface Props {
+    tech: string;
+}
+
+const { tech } = Astro.props;
+
+const colorMap: Record<string, string> = {
+    // Languages
+    typescript: "text-blue-400 border-blue-400/20 bg-blue-400/5",
+    javascript: "text-yellow-300 border-yellow-300/20 bg-yellow-300/5",
+    go: "text-sky-400 border-sky-400/20 bg-sky-400/5",
+    python: "text-blue-500 border-blue-500/20 bg-blue-500/5",
+    sql: "text-orange-300 border-orange-300/20 bg-orange-300/5",
+
+    // Frontend Frameworks & Tools
+    react: "text-cyan-400 border-cyan-400/20 bg-cyan-400/5",
+    astro: "text-orange-500 border-orange-500/20 bg-orange-500/5",
+    tailwind: "text-teal-400 border-teal-400/20 bg-teal-400/5",
+    "tailwind css": "text-teal-400 border-teal-400/20 bg-teal-400/5",
+    "shadcn/ui": "text-zinc-100 border-zinc-100/20 bg-zinc-100/5",
+    i18next: "text-emerald-400 border-emerald-400/20 bg-emerald-400/5",
+    streamlit: "text-red-400 border-red-400/20 bg-red-400/5",
+
+    // TanStack Ecosystem
+    "tanstack start": "text-teal-400 border-teal-400/30 bg-teal-400/10",
+    "tanstack query": "text-rose-400 border-rose-400/20 bg-rose-400/5",
+    "tanstack router": "text-emerald-400 border-emerald-400/20 bg-emerald-400/5",
+    "tanstack table": "text-blue-400 border-blue-400/20 bg-blue-400/5",
+
+    // Backend & DB
+    bun: "text-amber-200 border-amber-200/20 bg-amber-200/5",
+    drizzle: "text-lime-400 border-lime-400/20 bg-lime-400/5",
+    sqlite: "text-sky-600 border-sky-600/20 bg-sky-600/5",
+    turso: "text-cyan-300 border-cyan-300/20 bg-cyan-300/5",
+    redis: "text-red-500 border-red-500/20 bg-red-500/5",
+    flask: "text-zinc-400 border-zinc-400/20 bg-zinc-400/5",
+    sqlalchemy: "text-red-400 border-red-400/20 bg-red-400/5",
+    gunicorn: "text-green-400 border-green-400/20 bg-green-400/5",
+    "chroma db": "text-yellow-500 border-yellow-500/20 bg-yellow-500/5",
+    zod: "text-blue-800 border-blue-800/20 bg-blue-800/5",
+
+    // Infrastructure & Services
+    nginx: "text-emerald-600 border-emerald-600/20 bg-emerald-600/5",
+    pm2: "text-violet-400 border-violet-400/20 bg-violet-400/5",
+    "github pages": "text-zinc-300 border-zinc-300/20 bg-zinc-300/5",
+    selenium: "text-green-500 border-green-500/20 bg-green-500/5",
+    "chrome webdriver": "text-blue-400 border-blue-400/20 bg-blue-400/5",
+
+    // APIs & Integrations
+    tmdb: "text-cyan-400 border-cyan-400/20 bg-cyan-400/5",
+    igdb: "text-purple-400 border-purple-400/20 bg-purple-400/5",
+    hltb: "text-indigo-400 border-indigo-400/20 bg-indigo-400/5",
+    gbooks: "text-red-400 border-red-400/20 bg-red-400/5",
+    jikan: "text-blue-400 border-blue-400/20 bg-blue-400/5",
+    "spotify api": "text-green-500 border-green-500/20 bg-green-500/5",
+    youtube: "text-red-600 border-red-600/20 bg-red-600/5",
+    "better-auth": "text-yellow-500 border-yellow-500/20 bg-yellow-500/5",
+    graphql: "text-pink-500 border-pink-500/20 bg-pink-500/5",
+    "open trip planner": "text-orange-400 border-orange-400/20 bg-orange-400/5",
+    "ai sdk": "text-zinc-100 border-zinc-100/20 bg-zinc-100/5",
+
+    // Data Science & Python libs
+    pandas: "text-indigo-300 border-indigo-300/20 bg-indigo-300/5",
+    numpy: "text-blue-400 border-blue-400/20 bg-blue-400/5",
+    matplotlib: "text-orange-300 border-orange-300/20 bg-orange-300/5",
+    "openai whisper": "text-emerald-500 border-emerald-500/20 bg-emerald-500/5",
+    pyaudio: "text-zinc-300 border-zinc-300/20 bg-zinc-300/5",
+};
+
+const techKey = tech.toLowerCase();
+const colorClass = colorMap[techKey] || "text-muted-foreground border-border bg-secondary/30";
+---
+
+
+<span class={`px-2 py-0.5 rounded-md text-[10px] uppercase tracking-wider font-bold border ${colorClass} transition-colors`}>
+    {tech}
+</span>

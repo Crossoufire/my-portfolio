@@ -1,0 +1,74 @@
+---
+import TechBadge from "./TechBadge.astro";
+import type {Project} from "@/data/projects";
+
+interface Props {
+    project: Project;
+}
+
+const { project } = Astro.props;
+
+const statusStyles = {
+    active: "bg-brand/15 text-brand border-brand/20",
+    archived: "bg-muted text-muted-foreground border-border",
+    private: "bg-indigo-500/15 text-indigo-400 border-indigo-500/20",
+    "in-progress": "bg-yellow-500/15 text-yellow-500 border-yellow-500/20",
+};
+---
+
+<article class="bg-card border border-border rounded-xl p-6 card-hover flex flex-col h-full">
+    <div class="flex items-start justify-between mb-4">
+        <h3 class="text-xl font-bold text-foreground tracking-tight">
+            {project.title}
+        </h3>
+        {project.status &&
+            <span class={`px-2.5 py-0.5 rounded-full text-xs font-medium border ${statusStyles[project.status]}`}>
+                {project.status}
+            </span>
+        }
+    </div>
+
+    <p class="text-muted-foreground mb-6 flex-1 text-sm leading-relaxed">
+        {project.description}
+    </p>
+
+    <div class="flex flex-wrap gap-2 mb-6">
+        {project.stack.slice(0, 5).map((tech) =>
+            <TechBadge
+                tech={tech}
+            />
+        )}
+        {project.stack.length > 5 &&
+            <span class="px-2 py-1 rounded-md text-xs font-medium bg-secondary text-secondary-foreground">
+                +{project.stack.length - 5}
+            </span>
+        }
+    </div>
+
+    <div class="flex items-center justify-start gap-4 pt-4 border-t border-border mt-auto">
+        <a href={`/projects/${project.slug}`} class="text-brand hover:text-brand/80 text-sm font-semibold transition-colors">
+            Learn more
+        </a>
+        {project.url &&
+            <a
+                target="_blank"
+                href={project.url}
+                rel="noopener noreferrer"
+                class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+            >
+                Live App
+            </a>
+        }
+
+        {project.github &&
+            <a
+                target="_blank"
+                href={project.github}
+                rel="noopener noreferrer"
+                class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+            >
+                GitHub
+            </a>
+        }
+    </div>
+</article>
